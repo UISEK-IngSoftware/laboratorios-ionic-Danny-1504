@@ -2,9 +2,9 @@
 
 ## Información del Estudiante
 
-- **Nombre:** [Tu nombre completo aquí]
-- **Carrera:** [Tu carrera]
-- **Fecha de inicio:** [Fecha]
+- **Nombre:** Danny Fernando Caraguay Saltos 
+- **Carrera:** Ingeniería Informática 
+- **Fecha de inicio:** 03 de junio del 2026
 
 ---
 
