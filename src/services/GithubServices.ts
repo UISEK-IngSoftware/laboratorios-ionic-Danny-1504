@@ -14,7 +14,7 @@ export const fetchRepositories = async (): Promise<Repository[]> => {
                 per_page: 100,
                 sort: 'created',
                 direction: 'desc',
-                affilation: 'owner',
+                affiliation: 'owner',
             },
         });
         return response.data as Repository[];

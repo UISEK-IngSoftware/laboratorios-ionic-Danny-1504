@@ -21,7 +21,7 @@ const Tab3: React.FC = () => {
             <img src='https://avatars.githubusercontent.com/u/215515929?v=4' alt='Avatar'
             ></img>
             <IonHeader>
-              <IonCardTitle>Danny Fernando Caraguay Saltos</IonCardTitle>
+              <IonCardTitle color='primary'>Danny Fernando Caraguay Saltos</IonCardTitle>
               <IonCardSubtitle>Desarrollador</IonCardSubtitle>
               <IonCardContent>
               <p>Desarrollador de software con experiencia en Ionic y React. Apasionado por la creación de aplicaciones móviles y web. 
