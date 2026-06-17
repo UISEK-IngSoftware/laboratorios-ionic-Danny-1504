@@ -1,7 +1,27 @@
-import { IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import { IonCard, IonCardContent, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonPage, IonSpinner, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
 import './Tab3.css';
+import React from 'react';
+import { GithubUser } from '../Interfaces/GithubUser';
+import { getUserInfo } from '../services/GithubServices';
+import LoadingSpinner from '../components/LoadingSpinner';
 
 const Tab3: React.FC = () => {
+  
+  const [userInfo, setUserInfo] = React.useState<GithubUser | null>(null);
+  const [loading, setLoading] = React.useState<boolean>(false);
+
+  const loadUserInfo = async () => {
+    setLoading(true);
+    const userData = await getUserInfo();
+    setUserInfo(userData);
+    setLoading(false);
+  }
+
+  useIonViewWillEnter(() => {
+    loadUserInfo();
+  });
+  
+
   return (
     <IonPage>
       <IonHeader>
@@ -18,20 +38,20 @@ const Tab3: React.FC = () => {
         <div className='card-container'>
           <IonCard
           className='card'>
-            <img src='https://avatars.githubusercontent.com/u/215515929?v=4' alt='Avatar'
+            <img src={userInfo?.avatar_url} alt={userInfo?.login}
             ></img>
             <IonHeader>
               <IonCardTitle color='primary'>Danny Fernando Caraguay Saltos</IonCardTitle>
               <IonCardSubtitle>Desarrollador</IonCardSubtitle>
               <IonCardContent>
-              <p>Desarrollador de software con experiencia en Ionic y React. Apasionado por la creación de aplicaciones móviles y web. 
-                En su tiempo libre, le gusta leer libros de programación y experimentar con nuevas tecnologías.  </p>
+              {userInfo?.bio}
             </IonCardContent>
 
             </IonHeader>
           </IonCard>
-          </div>        
-      </IonContent>
+          </div>  
+          {loading &&<LoadingSpinner isOpen={loading}/> }                
+      </IonContent>      
     </IonPage>
   );
 };
