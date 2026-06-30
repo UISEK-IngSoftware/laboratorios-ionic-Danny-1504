@@ -14,6 +14,7 @@ import { addCircle, logoGithub, personCircle } from 'ionicons/icons';
 import AuthService from './services/AuthService';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
+import EditRepository from './pages/EditRepository';
 import Tab3 from './pages/Tab3';
 import Login from './pages/Login';
 
@@ -67,6 +68,9 @@ const App: React.FC = () => {
                   </Route>
                   <Route exact path="/tab2">
                     <Tab2 />
+                  </Route>
+                  <Route exact path="/edit-repository">
+                    <EditRepository />
                   </Route>
                   <Route exact path="/tab3">
                     <Tab3 />

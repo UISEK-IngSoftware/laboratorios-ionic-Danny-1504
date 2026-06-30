@@ -60,3 +60,35 @@ export const getUserInfo = async () : Promise<GithubUser | null> => {
     }
     
 };
+
+export const updateRepository = async (
+    oldName: string,
+    repository: RepositoryPayload
+): Promise<Repository | null> => {
+    try {
+        const username = AuthService.getUsername();
+
+        const response = await githubApiClient.patch(
+            `/repos/${username}/${oldName}`,
+            repository
+        );        
+
+        return response.data as Repository;
+
+    } catch (error) {
+        throw new Error(`${(error as Error).message}`);
+    }
+};
+
+
+export const deleteRepository = async (repoName: string): Promise<void> => {
+    try {
+        const username = AuthService.getUsername();
+
+        await githubApiClient.delete(
+            `/repos/${username}/${repoName}`
+        );
+    } catch (error) {
+        throw new Error(`${(error as Error).message}`);
+    }
+};
